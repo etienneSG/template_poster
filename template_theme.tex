@@ -1,0 +1,146 @@
+% Template for LaTeX poster
+% Provide by E. de Saint Germain
+% Last version: March, 2016
+
+% Logo
+\newcommand{\mylogo}{images/logo_argon_gray.png}
+\newcommand{\coverlogo}{images/logo_argon_white.png}
+
+% Second logo / Client Logo
+\newcommand{\clientlogo}{images/logo_ponts.png}
+
+% Image themme
+\newcommand{\imagetheme}{images/Argon_theme.jpg}
+
+% Color theme
+\newcommand{\maincolor}{argon orange} % Main color
+\newcommand{\secondcolor}{argon gray} % Secundary color
+\newcommand{\fontcolor}{white} % Secundary color
+
+%Choose Layout
+\usetheme{Simple}
+
+\definecolorstyle{myColorStyle}{}
+{
+  % Background Colors
+  \colorlet{backgroundcolor}{\fontcolor}
+  \colorlet{framecolor}{\fontcolor}
+  % Title Colors
+  \colorlet{titlefgcolor}{\fontcolor}
+  \colorlet{titlebgcolor}{\secondcolor!80}
+  % Block Colors
+  \colorlet{blocktitlebgcolor}{\maincolor}
+  \colorlet{blocktitlefgcolor}{\fontcolor}
+  \colorlet{blockbodybgcolor}{\fontcolor}
+  \colorlet{blockbodyfgcolor}{black}
+  % Innerblock Colors
+  \colorlet{innerblocktitlebgcolor}{\fontcolor}
+  \colorlet{innerblocktitlefgcolor}{black}
+  \colorlet{innerblockbodybgcolor}{\fontcolor}
+  \colorlet{innerblockbodyfgcolor}{black}
+  % Note colors
+  \colorlet{notefgcolor}{black}
+  \colorlet{notebgcolor}{\secondcolor!10}
+  \colorlet{notefrcolor}{\fontcolor}
+}
+\usecolorstyle{myColorStyle}
+
+
+\definebackgroundstyle{myBackgroundStyle}{}
+{
+}
+\usebackgroundstyle{myBackgroundStyle}
+
+
+\defineblockstyle{myBlockStyle}{roundedcorners=20}
+{
+  % Block body style
+  \draw[color=blockbodybgcolor,
+        fill=blockbodybgcolor,
+        rounded corners=\blockroundedcorners]
+  (blockbody.south west) rectangle (blockbody.north east);
+  % Block title style
+  \ifBlockHasTitle
+    %\draw[color=blocktitlebgcolor,
+    %      fill=blocktitlebgcolor,
+    %      rounded corners=\blockroundedcorners]
+    \shade[left color=blocktitlebgcolor,
+           right color=blocktitlebgcolor!80,
+           rounded corners=\blockroundedcorners]
+    (blocktitle.south west) rectangle (blocktitle.north east);
+  \fi
+}
+\useblockstyle{myBlockStyle}
+
+
+\defineinnerblockstyle{myInnerBlockStyle}{}
+{
+  % Inner block body style
+  \draw[color=\fontcolor,
+        fill=\fontcolor,
+        rounded corners=\innerblockroundedcorners]
+        (innerblockbody.south west) rectangle (innerblockbody.north east);
+  % Inner block title style
+  \ifBlockHasTitle
+    \draw[color=\maincolor,
+          fill=\maincolor,
+          dashed,
+          line width=3pt]
+    (innerblocktitle.south west) -- (innerblocktitle.south east);
+  \fi
+}
+\useinnerblockstyle{myInnerBlockStyle}
+
+
+% Title style
+\newcommand{\titlewidthrate}{.7}
+\definetitlestyle{myTitleStyle}
+{
+  width=\linewidth,
+  roundedcorners=20,
+  linewidth=2pt,
+  innersep=20pt,
+  titletotopverticalspace=15mm,
+  titletoblockverticalspace=30mm
+}{
+  \begin{scope}[line width=\titlelinewidth,
+                rounded corners=\titleroundedcorners]
+    %\draw[color=titlebgcolor,
+    %      fill=titlebgcolor]
+    \shade[left color=titlebgcolor, right color=titlebgcolor!70]
+    (\titlewidthrate\titleposleft,\titleposbottom) rectangle (\titlewidthrate\titleposright,\titlepostop);
+  \end{scope}
+}
+\usetitlestyle{myTitleStyle}
+
+
+
+% Define title of the poster
+\settitle
+{
+  %\centering
+  \begin{minipage}{.14\linewidth}
+    \begin{flushleft}
+      \includegraphics[width=\linewidth]{\mylogo}
+    \end{flushleft}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{\titlewidthrate\linewidth}
+    \begin{center}
+      \color{titlefgcolor} {\bfseries \Huge \sc \@title \par}
+      \color{titlefgcolor} {\bfseries \huge \@subtitle \par}
+      \vspace*{1em}
+      {\huge \@author \par}
+      \vspace*{1em}
+      {\LARGE \@institute}
+    \end{center}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{.14\linewidth}
+    \begin{flushright}
+      \includegraphics[width=\linewidth]{\clientlogo}
+    \end{flushright}
+  \end{minipage}
+}
+
+
