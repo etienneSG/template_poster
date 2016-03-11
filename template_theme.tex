@@ -34,7 +34,7 @@
   \colorlet{blockbodybgcolor}{\fontcolor}
   \colorlet{blockbodyfgcolor}{black}
   % Innerblock Colors
-  \colorlet{innerblocktitlebgcolor}{\fontcolor}
+  \colorlet{innerblocktitlebgcolor}{\maincolor}
   \colorlet{innerblocktitlefgcolor}{black}
   \colorlet{innerblockbodybgcolor}{\fontcolor}
   \colorlet{innerblockbodyfgcolor}{black}
@@ -76,14 +76,14 @@
 \defineinnerblockstyle{myInnerBlockStyle}{}
 {
   % Inner block body style
-  \draw[color=\fontcolor,
-        fill=\fontcolor,
+  \draw[color=innerblockbodybgcolor,
+        fill=innerblockbodybgcolor,
         rounded corners=\innerblockroundedcorners]
         (innerblockbody.south west) rectangle (innerblockbody.north east);
   % Inner block title style
   \ifBlockHasTitle
-    \draw[color=\maincolor,
-          fill=\maincolor,
+    \draw[color=innerblocktitlebgcolor,
+          fill=innerblocktitlebgcolor,
           dashed,
           line width=3pt]
     (innerblocktitle.south west) -- (innerblocktitle.south east);
